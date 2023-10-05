@@ -1,0 +1,39 @@
+<main class="bg-primary" style="min-height: 100vh">
+    <div class="container bg-white mtop">
+      <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="row g-3">
+        <div class="col-md-3">
+          <label for="inputEmail" class="form-label">Email</label>
+          <input formControlName="email" 
+                type="email" 
+                class="form-control"
+                 id="inputEmail"
+                 >
+        </div>
+        <div class="col-md-3">
+          <label for="inputPassword" class="form-label">Password</label>
+          <input formControlName="password" type="password" class="form-control" id="inputPassword">
+        </div>
+        <div class="col-8">
+          <label for="inputName" class="form-label">Name</label>
+          <input formControlName="name" type="text" class="form-control" id="inputName" placeholder="Name">
+        </div>
+        <div class="col-8">
+          <label for="inputAddress" class="form-label">Address</label>
+          <input formControlName="address" type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+        </div>
+        <div class="col-md-6">
+          <label for="inputCity" class="form-label">City</label>
+          <input formControlName="city" type="text" class="form-control" id="inputCity">
+        </div>
+        <div class="col-12">
+          <button 
+          [disabled]="userForm.invalid"
+          type="submit"
+          class="btn btn-success">Sign in</button>
+        </div>
+      </form>
+      <div class="col-4">
+         {{userForm.value | json }}
+      </div>
+    </div>
+  </main>
