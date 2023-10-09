@@ -1,17 +1,42 @@
-<main class="bg-primary" style="min-height: 100vh">
+
+<main class="bg-success" style="min-height: 100vh">
     <div class="container bg-white mtop">
-      <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="row g-3">
-        <div class="col-md-3">
-          <label for="inputEmail" class="form-label">Email</label>
-          <input formControlName="email" 
-                type="email" 
+      <h1>My Form - Jorge Gómez</h1>
+          <br>
+        <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="row g-3">
+        <div class="col-md-3">          
+            <label for="inputEmail" class="form-label">Email</label>
+              <input 
+                formControlName="email" 
+                type="email"
+                [ngClass]="{'is-invalid': emailControlIsInvalid}"
                 class="form-control"
-                 id="inputEmail"
-                 >
-        </div>
+                id="inputEmail"
+                >
+              <div class="invalid-feedback">
+                <ng-container *ngIf="emailControl.errors?.['required']">
+                  Este campo es Requerido
+                </ng-container>
+                <ng-container *ngIf="emailControl.errors?.['email']">
+                   Debe ingresar un email válido
+                </ng-container>
+             </div>
+           </div>
         <div class="col-md-3">
           <label for="inputPassword" class="form-label">Password</label>
-          <input formControlName="password" type="password" class="form-control" id="inputPassword">
+          <input 
+            formControlName="password" 
+            type="password"
+            [ngClass]="{'is-invalid': passwordControlIsInvalid}"
+            class="form-control" 
+            id="inputPassword"
+            >
+            <div class="invalid-feedback">
+              <ng-container *ngIf="passwordControl.errors?.['required']">
+                Este campo es Requerido
+              </ng-container>
+           </div>
+
         </div>
         <div class="col-8">
           <label for="inputName" class="form-label">Name</label>
